@@ -187,15 +187,17 @@ const UniqueEvidenceFilter = ({
                   }}
                   onClick={() => onHuntEvidenceClick(evidence.id)}
                 >
-                  <Checkbox
-                    checked={isIncluded}
-                    sx={{
-                      color: isFiltered ? 'text.disabled' : 'text.secondary',
-                      '&.Mui-checked': {
-                        color: isFiltered ? 'text.disabled' : 'success.main',
-                      },
-                    }}
-                  />
+                  {!evidence.excludeOnly && (
+                    <Checkbox
+                      checked={isIncluded}
+                      sx={{
+                        color: isFiltered ? 'text.disabled' : 'text.secondary',
+                        '&.Mui-checked': {
+                          color: isFiltered ? 'text.disabled' : 'success.main',
+                        },
+                      }}
+                    />
+                  )}
                   <Box sx={{ 
                     flexGrow: 1,
                     display: 'flex',
@@ -205,7 +207,7 @@ const UniqueEvidenceFilter = ({
                            isIncluded ? 'success.main' :
                            'text.primary'
                   }}>
-                    {evidence.label} ({evidence.ghost})
+                    {evidence.label} ({evidence.excludeOnly ? `cannot be ${evidence.ghost}` : evidence.ghost})
                     {isEvidenceInSearchResults(evidence) && (
                       <FilterAltIcon 
                         sx={{ 

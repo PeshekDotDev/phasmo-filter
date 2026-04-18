@@ -76,10 +76,16 @@ const EvidenceFilters = () => {
   };
 
   const handleHuntEvidenceClick = (evidence) => {
+    const evidenceData = huntEvidenceList.find(e => e.id === evidence);
+    const isExcludeOnly = evidenceData?.excludeOnly;
+
     setSelectedHuntEvidence(prev => {
       const currentState = prev[evidence];
       let newState;
-      if (currentState === undefined) {
+      if (isExcludeOnly) {
+        // Exclude-only: toggle between undefined and false
+        newState = currentState === undefined ? false : undefined;
+      } else if (currentState === undefined) {
         newState = true;
       } else if (currentState === true) {
         newState = undefined;

@@ -29,6 +29,11 @@
         {
           "id": "screams_parabolic",
           "label": "Unique scream heard on parabolic mic"
+        },
+        {
+          "id": "ghost_is_male",
+          "label": "Ghost is male",
+          "excludeOnly": true
         }
       ]
     },
@@ -54,7 +59,13 @@
         "Line-of-sight speed increase accumulates in the background while a player is within 10m, applied once no player is nearby",
         "Can only be a female ghost"
       ],
-      "hunt_evidence": []
+      "hunt_evidence": [
+        {
+          "id": "ghost_is_male",
+          "label": "Ghost is male",
+          "excludeOnly": true
+        }
+      ]
     },
     {
       "ghost": "Demon",

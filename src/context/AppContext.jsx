@@ -124,7 +124,7 @@ export const AppProvider = ({ children }) => {
           const existing = map.get(he.id)
           existing.ghost = existing.ghost + ', ' + ghost.ghost
         } else {
-          map.set(he.id, { id: he.id, label: he.label, ghost: ghost.ghost })
+          map.set(he.id, { id: he.id, label: he.label, ghost: ghost.ghost, excludeOnly: he.excludeOnly || false })
         }
       })
     })
