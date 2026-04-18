@@ -153,7 +153,24 @@
         "Crucifix range reduced by 2m when enraged, increased by 1m when weakened",
         "Incense blinding duration: 4s enraged, 5s normal, 6s weakened"
       ],
-      "hunt_evidence": []
+      "hunt_evidence": [
+        {
+          "id": "enraged_by_equipment",
+          "label": "Ghost speeds up after using crucifix, incense, or salt"
+        },
+        {
+          "id": "slow_after_enraged_hunt",
+          "label": "Hunts at fast speed, then next hunt without being enraged, hunt speed is slower than player walk speed"
+        },
+        {
+          "id": "no_salt_when_enraged",
+          "label": "Can't disturb salt while enraged (won't step in salt twice in a row)"
+        },
+        {
+          "id": "variable_incense_blind",
+          "label": "Incense blinds for less time when ghost is fast (4s enraged, 5s normal, 6s weakened)"
+        }
+      ]
     },
     {
       "ghost": "Goryo",
