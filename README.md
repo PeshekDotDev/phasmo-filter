@@ -1,7 +1,23 @@
 # Phasmo Filter
 
-This project allows you to filter ghosts in phasmophobia. Unlike others, it has unique hunt characteristics to filter by to help on low/no evidence runs.
+A ghost filtering tool for Phasmophobia. Unlike other tools, it includes unique hunt characteristics to filter by, helping with low/no evidence runs.
 
 https://phasmo-filter.pages.dev/
 
-This project uses vite and react and is deployed to Cloudflare via Cloudflare Workers
+## Features
+
+- Filter by standard evidence, speed, hunt sanity, and unique ghost traits
+- Support for multiple game versions via a version selector
+- Smudge and hunt cooldown timers
+- Mobile-friendly with responsive layout
+
+## Supported Game Versions
+
+- Patch 1.000.015 (v0.12.1.2)
+- Patch 1.000.031 (v0.16.2.0) — includes Dayan, Obambo, and Gallu
+
+## Tech Stack
+
+- React 18 + Vite
+- Material-UI v5
+- Deployed to Cloudflare Pages
