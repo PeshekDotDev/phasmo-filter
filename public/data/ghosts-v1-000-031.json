@@ -61,9 +61,12 @@
       ],
       "hunt_evidence": [
         {
-          "id": "ghost_is_male",
-          "label": "Ghost is male",
-          "excludeOnly": true
+          "id": "speed_reacts_to_movement",
+          "label": "Ghost speeds up when players move nearby and slows down when they stand still"
+        },
+        {
+          "id": "movement_triggers_hunt",
+          "label": "Player movement near ghost can trigger a hunt"
         }
       ]
     },
@@ -389,7 +392,16 @@
         "Hunts initiated in aggressive state have 20% shorter duration, even if state switches mid-hunt",
         "Can switch states during a hunt"
       ],
-      "hunt_evidence": []
+      "hunt_evidence": [
+        {
+          "id": "speed_switches_mid_hunt",
+          "label": "Ghost switches between fast and slow speeds mid-hunt"
+        },
+        {
+          "id": "shorter_aggressive_hunts",
+          "label": "Aggressive hunts are shorter than normal (20% shorter)"
+        }
+      ]
     },
     {
       "ghost": "Oni",
