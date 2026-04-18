@@ -18,6 +18,9 @@ export const AppProvider = ({ children }) => {
     darkMode: true,
     fontSize: 'medium'
   })
+  const [gameVersion, setGameVersion] = useState(() => {
+    return localStorage.getItem('phasmo-game-version') || 'v1-000-031'
+  })
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
   
@@ -39,7 +42,8 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     const fetchGhosts = async () => {
       try {
-        const response = await fetch('/data/ghosts-v1-000-015.json')
+        setIsLoading(true)
+        const response = await fetch(`/data/ghosts-${gameVersion}.json`)
         if (!response.ok) {
           throw new Error('Failed to fetch ghost data')
         }
@@ -52,8 +56,9 @@ export const AppProvider = ({ children }) => {
       }
     }
 
+    localStorage.setItem('phasmo-game-version', gameVersion)
     fetchGhosts()
-  }, [])
+  }, [gameVersion])
 
   // Set up timer worker listeners
   useEffect(() => {
@@ -121,6 +126,8 @@ export const AppProvider = ({ children }) => {
   const value = useMemo(() => ({
     ghosts,
     setGhosts,
+    gameVersion,
+    setGameVersion,
     selectedEvidence,
     setSelectedEvidence,
     selectedSpeed,
@@ -148,6 +155,7 @@ export const AppProvider = ({ children }) => {
     timerWorker
   }), [
     ghosts,
+    gameVersion,
     selectedEvidence,
     selectedSpeed,
     selectedHuntEvidence,

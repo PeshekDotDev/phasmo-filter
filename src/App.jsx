@@ -1,13 +1,93 @@
 import React, { useState } from 'react'
-import { ThemeProvider, createTheme, useMediaQuery, useTheme, IconButton, Drawer, AppBar, Toolbar, Typography } from '@mui/material'
+import { ThemeProvider, createTheme, useMediaQuery, useTheme, IconButton, Drawer, AppBar, Toolbar, Typography, Select, MenuItem } from '@mui/material'
 import { BrowserRouter as Router } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
-import { AppProvider } from './context/AppContext'
+import { AppProvider, useApp } from './context/AppContext'
 import './App.css'
 import MenuIcon from '@mui/icons-material/Menu'
 import EvidenceFilters from './components/features/EvidenceFilters'
 import GhostCards from './components/features/GhostCards'
+
+const VERSION_OPTIONS = [
+  { value: 'v1-000-015', label: 'v1.000.015' },
+  { value: 'v1-000-031', label: 'v1.000.031' },
+]
+
+function AppBarContent({ isMobile, onMenuClick }) {
+  const { gameVersion, setGameVersion } = useApp()
+
+  return (
+    <Toolbar sx={{ minHeight: '48px !important' }}>
+      {isMobile && (
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={onMenuClick}
+          sx={{ mr: 2 }}
+        >
+          <MenuIcon />
+        </IconButton>
+      )}
+      <Typography
+        variant="subtitle1"
+        noWrap
+        component="div"
+        className="spooky-title"
+        sx={{
+          fontFamily: '"Creepster", cursive',
+          textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 25px rgba(220, 20, 60, 0.8)',
+          color: '#dc143c',
+          letterSpacing: '2px',
+          fontSize: { xs: '1.2rem', sm: '1.5rem' }
+        }}
+      >
+        👻 Phasmo Filter —
+      </Typography>
+      <Select
+        value={gameVersion}
+        onChange={(e) => setGameVersion(e.target.value)}
+        variant="standard"
+        disableUnderline
+        sx={{
+          ml: 1,
+          fontFamily: '"Creepster", cursive',
+          color: '#dc143c',
+          fontSize: { xs: '1.2rem', sm: '1.5rem' },
+          letterSpacing: '2px',
+          textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 25px rgba(220, 20, 60, 0.8)',
+          '.MuiSelect-icon': {
+            color: '#dc143c',
+          },
+          '.MuiSelect-select': {
+            py: 0,
+          },
+        }}
+      >
+        {VERSION_OPTIONS.map(opt => (
+          <MenuItem key={opt.value} value={opt.value}>{opt.label}</MenuItem>
+        ))}
+      </Select>
+      <Typography
+        variant="subtitle1"
+        noWrap
+        component="span"
+        className="spooky-title"
+        sx={{
+          fontFamily: '"Creepster", cursive',
+          textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 25px rgba(220, 20, 60, 0.8)',
+          color: '#dc143c',
+          letterSpacing: '2px',
+          fontSize: { xs: '1.2rem', sm: '1.5rem' },
+          ml: 0.5
+        }}
+      >
+        🔮
+      </Typography>
+    </Toolbar>
+  )
+}
 
 function App() {
   const [theme] = useState(createTheme({
@@ -224,34 +304,7 @@ function App() {
                 minHeight: '48px'
                   }}
                 >
-              <Toolbar sx={{ minHeight: '48px !important' }}>
-                {isMobile && (
-                    <IconButton
-                      color="inherit"
-                      aria-label="open drawer"
-                      edge="start"
-                      onClick={handleDrawerToggle}
-                      sx={{ mr: 2 }}
-                    >
-                      <MenuIcon />
-                    </IconButton>
-                )}
-                <Typography 
-                  variant="subtitle1" 
-                  noWrap 
-                  component="div"
-                  className="spooky-title"
-                  sx={{ 
-                    fontFamily: '"Creepster", cursive',
-                    textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 25px rgba(220, 20, 60, 0.8)',
-                    color: '#dc143c',
-                    letterSpacing: '2px',
-                    fontSize: { xs: '1.2rem', sm: '1.5rem' }
-                  }}
-                >
-                  👻 Phasmo Filter — v1.000.015 🔮
-                </Typography>
-                  </Toolbar>
+              <AppBarContent isMobile={isMobile} onMenuClick={handleDrawerToggle} />
                 </AppBar>
             <Box sx={{ display: 'flex', flexGrow: 1, overflow: 'hidden' }}>
               {isMobile ? (

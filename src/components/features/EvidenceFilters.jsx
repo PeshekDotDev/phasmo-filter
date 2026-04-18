@@ -209,9 +209,9 @@ const EvidenceFilters = () => {
               >
                 🔮 Spectral Filters 🔮
               </Typography>
-              <Box sx={{ 
-                display: 'flex', 
-                gap: 2, 
+              <Box sx={{
+                display: 'flex',
+                gap: 2,
                 justifyContent: 'center',
                 flexWrap: 'wrap'
               }}>
