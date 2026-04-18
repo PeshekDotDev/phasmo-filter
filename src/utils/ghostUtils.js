@@ -30,21 +30,16 @@ export const ghostCanHaveEvidence = (ghost, evidence) => {
 
 // Helper function to check if a ghost can have specific hunt evidence (includes Mimic special case)
 export const ghostCanHaveHuntEvidence = (ghost, evidenceId, huntEvidenceList) => {
-  const huntEvidence = huntEvidenceList.find(e => e.id === evidenceId);
-  if (!huntEvidence) return false;
-  
-  const ghostNames = huntEvidence.ghost.split(', ');
-  
-  // Check if this ghost is directly associated with this evidence
-  if (ghostNames.includes(ghost.ghost)) {
+  // Check if the ghost directly has this hunt evidence
+  if (ghost.hunt_evidence && ghost.hunt_evidence.some(he => he.id === evidenceId)) {
     return true;
   }
-  
+
   // Special case: Mimic can copy any ghost's unique traits
   if (ghost.ghost === 'The Mimic') {
     return true;
   }
-  
+
   return false;
 };
 

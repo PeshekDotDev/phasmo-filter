@@ -6,7 +6,6 @@ import { Virtuoso } from 'react-virtuoso';
 import { useApp } from '../../context/AppContext';
 import { sortGhosts } from '../../utils/ghostUtils';
 import { checkGhostFilters } from '../../utils/filterUtils';
-import { huntEvidenceList } from '../../constants/huntEvidence';
 import GhostCard from '../shared/GhostCard';
 
 const GhostCards = () => {
@@ -22,7 +21,8 @@ const GhostCards = () => {
     excludedGhosts,
     setExcludedGhosts,
     sortOrder,
-    setSortOrder
+    setSortOrder,
+    huntEvidenceList
   } = useApp();
 
   const [expandedCards, setExpandedCards] = useState({});

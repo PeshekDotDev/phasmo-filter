@@ -116,6 +116,21 @@ export const AppProvider = ({ children }) => {
     }
   }, [timerWorker])
 
+  const huntEvidenceList = useMemo(() => {
+    const map = new Map()
+    ghosts.forEach(ghost => {
+      (ghost.hunt_evidence || []).forEach(he => {
+        if (map.has(he.id)) {
+          const existing = map.get(he.id)
+          existing.ghost = existing.ghost + ', ' + ghost.ghost
+        } else {
+          map.set(he.id, { id: he.id, label: he.label, ghost: ghost.ghost })
+        }
+      })
+    })
+    return Array.from(map.values())
+  }, [ghosts])
+
   const updateSettings = (key, value) => {
     setSettings(prev => ({
       ...prev,
@@ -124,6 +139,7 @@ export const AppProvider = ({ children }) => {
   }
 
   const value = useMemo(() => ({
+    huntEvidenceList,
     ghosts,
     setGhosts,
     gameVersion,
@@ -154,6 +170,7 @@ export const AppProvider = ({ children }) => {
     setHuntCooldownTimer,
     timerWorker
   }), [
+    huntEvidenceList,
     ghosts,
     gameVersion,
     selectedEvidence,

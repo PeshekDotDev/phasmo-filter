@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Tabs, Tab, Button, Divider } from '@mui/material';
 import { useApp } from '../../context/AppContext';
-import { huntEvidenceList } from '../../constants/huntEvidence';
 import SmudgeTimer from '../timers/SmudgeTimer';
 import HuntCooldownTimer from '../timers/HuntCooldownTimer';
 import StandardEvidenceFilter from '../filters/StandardEvidenceFilter';
@@ -28,7 +27,8 @@ const EvidenceFilters = () => {
     setSortOrder,
     setSmudgeTimer,
     setHuntCooldownTimer,
-    timerWorker
+    timerWorker,
+    huntEvidenceList
   } = useApp();
 
   const [activeTab, setActiveTab] = useState(0);
