@@ -416,7 +416,7 @@
         },
         {
           "id": "shorter_aggressive_hunts",
-          "label": "Aggressive hunts are shorter than normal (20% shorter)"
+          "label": "Aggressive hunts are 20% shorter (Small map: 12/16/24s, Medium map: 24/32/40s, Large map: 32/40/48s)"
         }
       ]
     },
