@@ -42,7 +42,7 @@
       "min_speed": 1.2,
       "max_speed": 2.25,
       "alt_speed": null,
-      "has_los": true,
+      "has_los": false,
       "hunt_sanity": "50%",
       "hunt_sanity_low": "45%",
       "hunt_sanity_high": "65%",
