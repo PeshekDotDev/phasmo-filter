@@ -1,43 +1,336 @@
 {
   "ghosts": [
     {
-      "ghost": "Spirit",
+      "ghost": "Banshee",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
       "has_los": true,
       "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
+      "hunt_sanity_low": "12%",
+      "hunt_sanity_high": "87%",
       "evidence": [
-        "EMF 5",
-        "Spirit Box",
-        "Writing"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "Will wait 180s after being incensed before attempting to hunt again, instead of the standard 90s"
-      ]
-    },
-    {
-      "ghost": "Wraith",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
-      "evidence": [
-        "EMF 5",
-        "Spirit Box",
+        "Ultraviolet",
+        "Ghost Orbs",
         "DOTs"
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Will not touch nor interact with salt in any way",
-        "Will not be slowed down by tier 3 salt during a hunt",
-        "Can teleport to a random player, leaving EMF 2 or EMF 5 at the their new location"
+        "33% chance to give unique scream through Parabolic Microphone or Sound Recorder",
+        "Hunts based on target's sanity instead of average sanity",
+        "Will only pursue its target during a hunt (if the target is inside)",
+        "Target loses 15% sanity if they touch the ghost during a singing ghost event (standard drain is 10%)",
+        "Prefers singing ghost events (46.67% chance vs 20% standard)",
+        "Will attempt to roam toward their target while in DOTs state",
+        "66% chance to roam toward its target without leaving EMF if target is inside",
+        "Can only be a female ghost"
+      ]
+    },
+    {
+      "ghost": "Dayan",
+      "min_speed": 1.2,
+      "max_speed": 2.25,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "45%",
+      "hunt_sanity_high": "65%",
+      "evidence": [
+        "EMF 5",
+        "Ghost Orbs",
+        "Spirit Box"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Moves faster during hunts (2.25 m/s) and hunts sooner (65% sanity) when a player is moving within 10m",
+        "Moves slower during hunts (1.2 m/s) and hunts later (45% sanity) when a player is standing still within 10m",
+        "Standard speed and 50% hunt threshold when no player is within 10m",
+        "Line-of-sight speed increase accumulates in the background while a player is within 10m, applied once no player is nearby",
+        "Can only be a female ghost"
+      ]
+    },
+    {
+      "ghost": "Demon",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "70%",
+      "hunt_sanity_low": "70%",
+      "hunt_sanity_high": "100%",
+      "evidence": [
+        "Ultraviolet",
+        "Writing",
+        "Freezing"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Can hunt 60s after being smudged instead of the standard 90s",
+        "Can hunt 20s after the previous hunt has ended or ghost has used a crucifix instead of the standard 25s",
+        "Crucifix range is increased by 50% per tier (4.5m, 6m, 7.5m respectively)",
+        "Can hunt at any sanity"
+      ]
+    },
+    {
+      "ghost": "Deogen",
+      "min_speed": 0.4,
+      "max_speed": 3,
+      "alt_speed": null,
+      "has_los": false,
+      "hunt_sanity": "40%",
+      "hunt_sanity_low": "40%",
+      "hunt_sanity_high": "40%",
+      "evidence": [
+        "Spirit Box",
+        "Writing",
+        "DOTs"
+      ],
+      "nightmare_evidence": "Spirit Box",
+      "extra_information": [
+        "33% chance to give heavy breathing through spirit box when within 1m of the ghost",
+        "Very fast hunt speed, but will slow down as it nears the targetted player",
+        "Is more visible during hunts",
+        "Always has LOS of the player during hunts, meaning you cannot hide from a Deogen"
+      ]
+    },
+    {
+      "ghost": "Gallu",
+      "min_speed": 1.36,
+      "max_speed": 1.955,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "40%",
+      "hunt_sanity_high": "60%",
+      "evidence": [
+        "EMF 5",
+        "Spirit Box",
+        "Ultraviolet"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Three states: normal (1.7 m/s, 50% sanity), enraged (1.955 m/s, 60% sanity), and weakened (1.36 m/s, 40% sanity)",
+        "Becomes enraged after burning a crucifix, incense use, or stepping in salt",
+        "Switches to weakened state if a hunt ends while enraged",
+        "Cannot disturb salt piles while enraged",
+        "Crucifix range reduced by 2m when enraged, increased by 1m when weakened",
+        "Incense blinding duration: 4s enraged, 5s normal, 6s weakened"
+      ]
+    },
+    {
+      "ghost": "Goryo",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
+      "evidence": [
+        "EMF 5",
+        "Ultraviolet",
+        "DOTs"
+      ],
+      "nightmare_evidence": "DOTs",
+      "extra_information": [
+        "DOTs only appear on video camera and will not show if a player is in the same room (DOTs state can start outside of room and enter a player's room)",
+        "Cannot change favorite rooms",
+        "Does not wander from its room often"
+      ]
+    },
+    {
+      "ghost": "Hantu",
+      "min_speed": 1.4,
+      "max_speed": 2.7,
+      "alt_speed": null,
+      "has_los": false,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
+      "evidence": [
+        "Ultraviolet",
+        "Ghost Orbs",
+        "Freezing"
+      ],
+      "nightmare_evidence": "Freezing",
+      "extra_information": [
+        "Will have visible freezing breath during hunts when the breaker is off/broken",
+        "Cannot turn on the breaker",
+        "More likely to turn off the breaker",
+        "Is faster in colder rooms during hunts"
+      ]
+    },
+    {
+      "ghost": "Jinn",
+      "min_speed": 1.7,
+      "max_speed": 2.5,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
+      "evidence": [
+        "EMF 5",
+        "Ultraviolet",
+        "Freezing"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "With the breaker on, the Jinn will speed up during a hunt if a player is in LOS and further than 3m away",
+        "The Jinn cannot directly turn off the breaker",
+        "With the breaker on, can drop a nearby player's sanity by 25%, with EMF 2 or EMF 5 at the breaker"
+      ]
+    },
+    {
+      "ghost": "Mare",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "60%",
+      "hunt_sanity_low": "40%",
+      "hunt_sanity_high": "60%",
+      "evidence": [
+        "Spirit Box",
+        "Ghost Orbs",
+        "Writing"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Won't hunt until 40% average sanity when light switch in its current room is in the on position (regardless of breaker state), 60% average sanity if light switch is in the off position or if the lights are broken (regardless of light switch state)",
+        "Will wander out of rooms with lights on to rooms with lights off",
+        "Prefers turning off lights and light bursting events",
+        "Cannot not turn on lights (excluding TVs and computers)",
+        "Can immediately turn off a light switch (or lamp) that a player has turned on within 4m of the ghost"
+      ]
+    },
+    {
+      "ghost": "Moroi",
+      "min_speed": 1.5,
+      "max_speed": 2.25,
+      "alt_speed": 3.71,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
+      "evidence": [
+        "Spirit Box",
+        "Writing",
+        "Freezing"
+      ],
+      "nightmare_evidence": "Spirit Box",
+      "extra_information": [
+        "Places a curse on player when heard through spirit box or parabolic microphone, which causes sanity to passively drain twice as fast",
+        "Incense blindness duration during hunts is increased by 50% (7.5s instead of 5s)"
+      ]
+    },
+    {
+      "ghost": "Myling",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
+      "evidence": [
+        "EMF 5",
+        "Ultraviolet",
+        "Writing"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Footsteps and vocals cannot be heard more than 12m away during hunts (normal is 20m)",
+        "Has an increased number of sounds through the parabolic microphone"
+      ]
+    },
+    {
+      "ghost": "Obake",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
+      "evidence": [
+        "EMF 5",
+        "Ultraviolet",
+        "Ghost Orbs"
+      ],
+      "nightmare_evidence": "Ultraviolet",
+      "extra_information": [
+        "Special 6 fingered fingerprints",
+        "Has a 25% chance to not leave ultraviolet evidence",
+        "Will change models for a single blink during hunts at least once per standard length hunt",
+        "Can make fingerprints disappear twice as fast"
+      ]
+    },
+    {
+      "ghost": "Obambo",
+      "min_speed": 1.445,
+      "max_speed": 1.955,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "65%",
+      "hunt_sanity_low": "10%",
+      "hunt_sanity_high": "65%",
+      "evidence": [
+        "DOTs",
+        "Writing",
+        "Ultraviolet"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Switches between calm and aggressive states every 2 minutes (starts calm, first switch 1 minute after door opens)",
+        "Calm state: hunts at 10% sanity, 1.445 m/s speed, activity level of 90",
+        "Aggressive state: hunts at 65% sanity, 1.955 m/s speed, activity level of 25",
+        "Hunts initiated in aggressive state have 20% shorter duration, even if state switches mid-hunt",
+        "Can switch states during a hunt"
+      ]
+    },
+    {
+      "ghost": "Oni",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
+      "evidence": [
+        "EMF 5",
+        "Freezing",
+        "DOTs"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Drains 20% sanity during events (instead of the standard 10%)",
+        "Never does the \"Ghost Mist\" event",
+        "Blinks more frequently during hunts, making them more visible",
+        "More active around multiple people",
+        "More likely to appear as full ghost model during events"
+      ]
+    },
+    {
+      "ghost": "Onryo",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "60%",
+      "hunt_sanity_low": "60%",
+      "hunt_sanity_high": "100%",
+      "evidence": [
+        "Spirit Box",
+        "Ghost Orbs",
+        "Freezing"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Will attempt to hunt at any sanity after extinguishing every 3rd flame",
+        "Flames act like crucifixes, will blow out a flame if it tries to hunt (within 4m). Ghost prioritizes flames over crucifixes when preventing hunts",
+        "More likely to extinguish a flame, the more players that are dead"
       ]
     },
     {
@@ -86,73 +379,23 @@
       ]
     },
     {
-      "ghost": "Banshee",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "12%",
-      "hunt_sanity_high": "87%",
-      "evidence": [
-        "Ultraviolet",
-        "Ghost Orbs",
-        "DOTs"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "33% chance to give unique scream through Parabolic Microphone or Sound Recorder",
-        "Hunts based on target's sanity instead of average sanity",
-        "Will only pursue its target during a hunt (if the target is inside)",
-        "Target loses 15% sanity if they touch the ghost during a singing ghost event (standard drain is 10%)",
-        "Prefers singing ghost events (46.67% chance vs 20% standard)",
-        "Will attempt to roam toward their target while in DOTs state",
-        "66% chance to roam toward its target without leaving EMF if target is inside",
-        "Can only be a female ghost"
-      ]
-    },
-    {
-      "ghost": "Jinn",
+      "ghost": "Raiju",
       "min_speed": 1.7,
       "max_speed": 2.5,
       "alt_speed": null,
       "has_los": true,
       "hunt_sanity": "50%",
       "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
+      "hunt_sanity_high": "65%",
       "evidence": [
         "EMF 5",
-        "Ultraviolet",
-        "Freezing"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "With the breaker on, the Jinn will speed up during a hunt if a player is in LOS and further than 3m away",
-        "The Jinn cannot directly turn off the breaker",
-        "With the breaker on, can drop a nearby player's sanity by 25%, with EMF 2 or EMF 5 at the breaker"
-      ]
-    },
-    {
-      "ghost": "Mare",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "60%",
-      "hunt_sanity_low": "40%",
-      "hunt_sanity_high": "60%",
-      "evidence": [
-        "Spirit Box",
         "Ghost Orbs",
-        "Writing"
+        "DOTs"
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Won't hunt until 40% average sanity when light switch in its current room is in the on position (regardless of breaker state), 60% average sanity if light switch is in the off position or if the lights are broken (regardless of light switch state)",
-        "Will wander out of rooms with lights on to rooms with lights off",
-        "Prefers turning off lights and light bursting events",
-        "Cannot not turn on lights (excluding TVs and computers)",
-        "Can immediately turn off a light switch (or lamp) that a player has turned on within 4m of the ghost"
+        "During a hunt, causes electronic disturbance at a 15m range instead of 10m",
+        "Increased speed near active electronic equipment while hunting"
       ]
     },
     {
@@ -199,50 +442,7 @@
       ]
     },
     {
-      "ghost": "Demon",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "70%",
-      "hunt_sanity_low": "70%",
-      "hunt_sanity_high": "100%",
-      "evidence": [
-        "Ultraviolet",
-        "Writing",
-        "Freezing"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "Can hunt 60s after being smudged instead of the standard 90s",
-        "Can hunt 20s after the previous hunt has ended or ghost has used a crucifix instead of the standard 25s",
-        "Crucifix range is increased by 50% per tier (4.5m, 6m, 7.5m respectively)",
-        "Can hunt at any sanity"
-      ]
-    },
-    {
-      "ghost": "Yurei",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
-      "evidence": [
-        "Ghost Orbs",
-        "Freezing",
-        "DOTs"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "Only ghost that can close or interact with an exit door outside of a hunt/event",
-        "Incensing the ghost will trap the ghost in its room for the duration of the incense effect (90s)",
-        "Can shut a door and drop sanity of nearby players by 15% if a door is in the room"
-      ]
-    },
-    {
-      "ghost": "Oni",
+      "ghost": "Spirit",
       "min_speed": 1.7,
       "max_speed": null,
       "alt_speed": null,
@@ -252,246 +452,12 @@
       "hunt_sanity_high": "50%",
       "evidence": [
         "EMF 5",
-        "Freezing",
-        "DOTs"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "Drains 20% sanity during events (instead of the standard 10%)",
-        "Never does the \"Ghost Mist\" event",
-        "Blinks more frequently during hunts, making them more visible",
-        "More active around multiple people",
-        "More likely to appear as full ghost model during events"
-      ]
-    },
-    {
-      "ghost": "Yokai",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "80%",
-      "evidence": [
         "Spirit Box",
-        "Ghost Orbs",
-        "DOTs"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "Hearing/detection distance is 2.5m and less during hunts",
-        "More active when talking near it",
-        "Talking in the same room as a Yokai can cause it to hunt up to 80% average sanity"
-      ]
-    },
-    {
-      "ghost": "Hantu",
-      "min_speed": 1.4,
-      "max_speed": 2.7,
-      "alt_speed": null,
-      "has_los": false,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
-      "evidence": [
-        "Ultraviolet",
-        "Ghost Orbs",
-        "Freezing"
-      ],
-      "nightmare_evidence": "Freezing",
-      "extra_information": [
-        "Will have visible freezing breath during hunts when the breaker is off/broken",
-        "Cannot turn on the breaker",
-        "More likely to turn off the breaker",
-        "Is faster in colder rooms during hunts"
-      ]
-    },
-    {
-      "ghost": "Goryo",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
-      "evidence": [
-        "EMF 5",
-        "Ultraviolet",
-        "DOTs"
-      ],
-      "nightmare_evidence": "DOTs",
-      "extra_information": [
-        "DOTs only appear on video camera and will not show if a player is in the same room (DOTs state can start outside of room and enter a player's room)",
-        "Cannot change favorite rooms",
-        "Does not wander from its room often"
-      ]
-    },
-    {
-      "ghost": "Myling",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
-      "evidence": [
-        "EMF 5",
-        "Ultraviolet",
         "Writing"
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Footsteps and vocals cannot be heard more than 12m away during hunts (normal is 20m)",
-        "Has an increased number of sounds through the parabolic microphone"
-      ]
-    },
-    {
-      "ghost": "Onryo",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "60%",
-      "hunt_sanity_low": "60%",
-      "hunt_sanity_high": "100%",
-      "evidence": [
-        "Spirit Box",
-        "Ghost Orbs",
-        "Freezing"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "Will attempt to hunt at any sanity after extinguishing every 3rd flame",
-        "Flames act like crucifixes, will blow out a flame if it tries to hunt (within 4m). Ghost prioritizes flames over crucifixes when preventing hunts",
-        "More likely to extinguish a flame, the more players that are dead"
-      ]
-    },
-    {
-      "ghost": "The Twins",
-      "min_speed": 1.53,
-      "max_speed": 1.87,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
-      "evidence": [
-        "EMF 5",
-        "Spirit Box",
-        "Freezing"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "Can do 2 interactions at the same time, one within its standard range (1.5m, 3m on medium/large maps) and the other within its extended range (8m, 16m on medium/large maps)",
-        "Ghost speed during hunts will be  ±10% of the normal 1.7m/s speed",
-        "Triggering motion sensors, stepping in salt, and spirit box responses only occur at its physical location"
-      ]
-    },
-    {
-      "ghost": "Raiju",
-      "min_speed": 1.7,
-      "max_speed": 2.5,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "65%",
-      "evidence": [
-        "EMF 5",
-        "Ghost Orbs",
-        "DOTs"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "During a hunt, causes electronic disturbance at a 15m range instead of 10m",
-        "Increased speed near active electronic equipment while hunting"
-      ]
-    },
-    {
-      "ghost": "Obake",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
-      "evidence": [
-        "EMF 5",
-        "Ultraviolet",
-        "Ghost Orbs"
-      ],
-      "nightmare_evidence": "Ultraviolet",
-      "extra_information": [
-        "Special 6 fingered fingerprints",
-        "Has a 25% chance to not leave ultraviolet evidence",
-        "Will change models for a single blink during hunts at least once per standard length hunt",
-        "Can make fingerprints disappear twice as fast"
-      ]
-    },
-    {
-      "ghost": "The Mimic",
-      "min_speed": 1.7,
-      "max_speed": null,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "12%",
-      "hunt_sanity_high": "100%",
-      "evidence": [
-        "Spirit Box",
-        "Ultraviolet",
-        "Freezing"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "Will always show Ghost Orbs as an additional evidence, even on 0 evidence",
-        "Changes ghost behavior every 30 seconds to 2 minutes, leading to inconsistent behavior depending on the ghost is it currently mimicking"
-      ]
-    },
-    {
-      "ghost": "Moroi",
-      "min_speed": 1.5,
-      "max_speed": 2.25,
-      "alt_speed": 3.71,
-      "has_los": true,
-      "hunt_sanity": "50%",
-      "hunt_sanity_low": "50%",
-      "hunt_sanity_high": "50%",
-      "evidence": [
-        "Spirit Box",
-        "Writing",
-        "Freezing"
-      ],
-      "nightmare_evidence": "Spirit Box",
-      "extra_information": [
-        "Places a curse on player when heard through spirit box or parabolic microphone, which causes sanity to passively drain twice as fast",
-        "Incense blindness duration during hunts is increased by 50% (7.5s instead of 5s)"
-      ]
-    },
-    {
-      "ghost": "Deogen",
-      "min_speed": 0.4,
-      "max_speed": 3,
-      "alt_speed": null,
-      "has_los": false,
-      "hunt_sanity": "40%",
-      "hunt_sanity_low": "40%",
-      "hunt_sanity_high": "40%",
-      "evidence": [
-        "Spirit Box",
-        "Writing",
-        "DOTs"
-      ],
-      "nightmare_evidence": "Spirit Box",
-      "extra_information": [
-        "33% chance to give heavy breathing through spirit box when within 1m of the ghost",
-        "Very fast hunt speed, but will slow down as it nears the targetted player",
-        "Is more visible during hunts",
-        "Always has LOS of the player during hunts, meaning you cannot hide from a Deogen"
+        "Will wait 180s after being incensed before attempting to hunt again, instead of the standard 90s"
       ]
     },
     {
@@ -516,73 +482,107 @@
       ]
     },
     {
-      "ghost": "Dayan",
-      "min_speed": 1.2,
-      "max_speed": 2.25,
+      "ghost": "The Mimic",
+      "min_speed": 1.7,
+      "max_speed": null,
       "alt_speed": null,
       "has_los": true,
       "hunt_sanity": "50%",
-      "hunt_sanity_low": "45%",
-      "hunt_sanity_high": "65%",
+      "hunt_sanity_low": "12%",
+      "hunt_sanity_high": "100%",
       "evidence": [
-        "EMF 5",
-        "Ghost Orbs",
-        "Spirit Box"
+        "Spirit Box",
+        "Ultraviolet",
+        "Freezing"
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Moves faster during hunts (2.25 m/s) and hunts sooner (65% sanity) when a player is moving within 10m",
-        "Moves slower during hunts (1.2 m/s) and hunts later (45% sanity) when a player is standing still within 10m",
-        "Standard speed and 50% hunt threshold when no player is within 10m",
-        "Line-of-sight speed increase accumulates in the background while a player is within 10m, applied once no player is nearby",
-        "Can only be a female ghost"
+        "Will always show Ghost Orbs as an additional evidence, even on 0 evidence",
+        "Changes ghost behavior every 30 seconds to 2 minutes, leading to inconsistent behavior depending on the ghost is it currently mimicking"
       ]
     },
     {
-      "ghost": "Obambo",
-      "min_speed": 1.445,
-      "max_speed": 1.955,
-      "alt_speed": null,
-      "has_los": true,
-      "hunt_sanity": "65%",
-      "hunt_sanity_low": "10%",
-      "hunt_sanity_high": "65%",
-      "evidence": [
-        "DOTs",
-        "Writing",
-        "Ultraviolet"
-      ],
-      "nightmare_evidence": null,
-      "extra_information": [
-        "Switches between calm and aggressive states every 2 minutes (starts calm, first switch 1 minute after door opens)",
-        "Calm state: hunts at 10% sanity, 1.445 m/s speed, activity level of 90",
-        "Aggressive state: hunts at 65% sanity, 1.955 m/s speed, activity level of 25",
-        "Hunts initiated in aggressive state have 20% shorter duration, even if state switches mid-hunt",
-        "Can switch states during a hunt"
-      ]
-    },
-    {
-      "ghost": "Gallu",
-      "min_speed": 1.36,
-      "max_speed": 1.955,
+      "ghost": "The Twins",
+      "min_speed": 1.53,
+      "max_speed": 1.87,
       "alt_speed": null,
       "has_los": true,
       "hunt_sanity": "50%",
-      "hunt_sanity_low": "40%",
-      "hunt_sanity_high": "60%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
       "evidence": [
         "EMF 5",
         "Spirit Box",
-        "Ultraviolet"
+        "Freezing"
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Three states: normal (1.7 m/s, 50% sanity), enraged (1.955 m/s, 60% sanity), and weakened (1.36 m/s, 40% sanity)",
-        "Becomes enraged after burning a crucifix, incense use, or stepping in salt",
-        "Switches to weakened state if a hunt ends while enraged",
-        "Cannot disturb salt piles while enraged",
-        "Crucifix range reduced by 2m when enraged, increased by 1m when weakened",
-        "Incense blinding duration: 4s enraged, 5s normal, 6s weakened"
+        "Can do 2 interactions at the same time, one within its standard range (1.5m, 3m on medium/large maps) and the other within its extended range (8m, 16m on medium/large maps)",
+        "Ghost speed during hunts will be  \u00b110% of the normal 1.7m/s speed",
+        "Triggering motion sensors, stepping in salt, and spirit box responses only occur at its physical location"
+      ]
+    },
+    {
+      "ghost": "Wraith",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
+      "evidence": [
+        "EMF 5",
+        "Spirit Box",
+        "DOTs"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Will not touch nor interact with salt in any way",
+        "Will not be slowed down by tier 3 salt during a hunt",
+        "Can teleport to a random player, leaving EMF 2 or EMF 5 at the their new location"
+      ]
+    },
+    {
+      "ghost": "Yokai",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "80%",
+      "evidence": [
+        "Spirit Box",
+        "Ghost Orbs",
+        "DOTs"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Hearing/detection distance is 2.5m and less during hunts",
+        "More active when talking near it",
+        "Talking in the same room as a Yokai can cause it to hunt up to 80% average sanity"
+      ]
+    },
+    {
+      "ghost": "Yurei",
+      "min_speed": 1.7,
+      "max_speed": null,
+      "alt_speed": null,
+      "has_los": true,
+      "hunt_sanity": "50%",
+      "hunt_sanity_low": "50%",
+      "hunt_sanity_high": "50%",
+      "evidence": [
+        "Ghost Orbs",
+        "Freezing",
+        "DOTs"
+      ],
+      "nightmare_evidence": null,
+      "extra_information": [
+        "Only ghost that can close or interact with an exit door outside of a hunt/event",
+        "Incensing the ghost will trap the ghost in its room for the duration of the incense effect (90s)",
+        "Can shut a door and drop sanity of nearby players by 15% if a door is in the room"
       ]
     }
   ],
