@@ -12,6 +12,8 @@ import GhostCards from './components/features/GhostCards'
 const VERSION_OPTIONS = [
   { value: 'v1-000-015', label: 'v1.000.015' },
   { value: 'v1-000-031', label: 'v1.000.031' },
+  { value: 'v1-000-036', label: 'v1.000.036' },
+  { value: 'v1-000-042', label: 'v1.000.042' },
 ]
 
 function AppBarContent({ isMobile, onMenuClick }) {

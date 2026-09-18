@@ -18,7 +18,7 @@ This is a React-based Phasmophobia ghost filtering tool that helps players ident
 - **App.jsx**: Main component with Material-UI theme, responsive layout (mobile drawer/desktop sidebar)
 - **AppContext.jsx**: Global state management for ghost data, filters, search, and settings
 - **Layout.jsx**: Base layout component
-- **Ghost Data**: Static JSON file (`public/data/ghosts-v1-000-015.json`) with ghost information including evidence, speeds, hunt characteristics
+- **Ghost Data**: Static versioned JSON files (`public/data/ghosts-<version>.json`, one per game version with ghost changes; selected via the version dropdown) with ghost information including evidence, speeds, hunt characteristics
 
 ### Key Components (src/components/features/)
 - **EvidenceFilters.jsx**: Evidence selection and filtering interface

@@ -19,7 +19,7 @@ export const AppProvider = ({ children }) => {
     fontSize: 'medium'
   })
   const [gameVersion, setGameVersion] = useState(() => {
-    return localStorage.getItem('phasmo-game-version') || 'v1-000-031'
+    return localStorage.getItem('phasmo-game-version') || 'v1-000-042'
   })
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
