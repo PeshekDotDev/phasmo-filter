@@ -351,8 +351,17 @@ const EvidenceFilters = () => {
               <Typography variant="body1" sx={{ mb: 1 }}>
                 Ghost Speeds:
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
                 • Default movement speed = 1.7 m/s
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                • Line of sight: speed rises 5% of base per second, capping at 1.65x base after 13s (2.805 m/s for a standard ghost)
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                • After losing you, speed decays slowly (about 65s from max back to base)
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                • Incense blinds a hunting ghost for 5s (Moroi 7s, Gallu 4-6s); hunt cooldown 25s (Demon 20s); incense hunt block 90s (Demon 60s, Spirit 180s)
               </Typography>
 
               <Typography variant="body1" sx={{ mb: 1 }}>

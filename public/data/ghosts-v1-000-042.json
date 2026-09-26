@@ -16,10 +16,11 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Cannot kill players inside official hiding spots (closets, lockers, tents) - detecting a hidden player instantly ends the hunt",
-        "After ending a hunt on a hidden player, its next hunt starts by walking directly to that player's hiding spot, even during the grace period",
-        "Slower base hunt speed (1.53 m/s) but accelerates faster than other ghosts in line of sight, reaching its 2.53 m/s top speed in roughly half the standard time",
-        "Prefers chasing visible players over searching hiding spots"
+        "Cannot kill players inside official hiding spots (closets, lockers, small tents) - detecting a hidden player instantly ends the hunt (does not apply to unofficial spots or when hiding spots are set to 0)",
+        "After ending a hunt on a hidden player, its next hunt starts by walking directly to that player's hiding spot, even during the grace period (effectively a zero grace period hunt)",
+        "Slower base hunt speed (1.53 m/s) but accelerates faster than any other ghost in line of sight (0.075x base speed per second instead of 0.05x), reaching its 2.53 m/s top speed after about 8.7s instead of 13s",
+        "Prefers chasing visible players over searching hiding spots",
+        "Base speed can be confused with The Twins (1.5 m/s) or a calm Obambo (1.445 m/s); unlike those, an Aswang never changes to a faster base speed on later hunts"
       ],
       "hunt_evidence": [
         {
@@ -52,23 +53,30 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "33% chance to give unique scream through Parabolic Microphone or Sound Recorder",
-        "Hunts based on target's sanity instead of average sanity",
-        "Will only pursue its target during a hunt (if the target is inside)",
+        "33% chance to give one of 20 unique screams instead of a normal paranormal sound when a Parabolic Microphone or Sound Recorder is used",
+        "Hunts based on its target's sanity instead of average sanity (can appear to hunt anywhere from 12% to 87% average sanity)",
+        "Will only chase and kill its target during a hunt if the target is inside; other players can be walked through harmlessly",
+        "If the target is outside, it still uses the target's sanity to decide to hunt, but then hunts like a normal ghost",
         "Target loses 15% sanity if they touch the ghost during a singing ghost event (standard drain is 10%)",
         "Prefers singing ghost events (46.67% chance vs 20% standard)",
-        "Will attempt to roam toward their target while in DOTs state",
-        "66% chance to roam toward its target without leaving EMF if target is inside",
-        "Can only be a female ghost"
+        "Has a 2/3 chance to roam toward its target while in DOTs state",
+        "66% chance on short roams to walk toward its target without leaving EMF (unlike Wraith/Phantom) if the target is inside",
+        "Can perform long roams from any room (50% chance), so it changes favorite rooms more often than most ghosts",
+        "Can only be a female ghost (female name, model, and voice)",
+        "The Mimic can imitate a Banshee only if The Mimic is itself female"
       ],
       "hunt_evidence": [
         {
           "id": "screams_parabolic",
-          "label": "Unique scream heard on parabolic mic"
+          "label": "Unique scream heard on parabolic mic or sound recorder"
+        },
+        {
+          "id": "ignores_non_target",
+          "label": "Ghost walks through / ignores a player during a hunt while chasing someone else (only its target can be killed)"
         },
         {
           "id": "ghost_is_male",
-          "label": "Ghost is male",
+          "label": "Ghost is male (male name, model, or voice)",
           "excludeOnly": true
         }
       ]
@@ -89,11 +97,13 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Moves faster during hunts (2.25 m/s) and hunts sooner (65% sanity) when a player is moving within 10m",
-        "Moves slower during hunts (1.2 m/s) and hunts later (45% sanity) when a player is standing still within 10m",
+        "Moves faster during hunts (fixed 2.25 m/s) and hunts sooner (65% sanity) when the closest player within 10m (any floor) is moving",
+        "Moves slower during hunts (fixed 1.2 m/s) and hunts later (45% sanity) when the closest player within 10m is standing still",
         "Standard speed and 50% hunt threshold when no player is within 10m",
-        "Line-of-sight speed increase accumulates in the background while a player is within 10m, applied once no player is nearby",
-        "Can only be a female ghost"
+        "Line-of-sight speed increase accumulates in the background while a player is within 10m and is applied once no player is nearby",
+        "In multiplayer, a still player (even hidden) within 10m slows the ghost down for everyone",
+        "Can only be a female ghost (female name, model, and voice)",
+        "The Mimic can imitate a Dayan only if The Mimic is itself female"
       ],
       "hunt_evidence": [
         {
@@ -102,7 +112,12 @@
         },
         {
           "id": "movement_triggers_hunt",
-          "label": "Player movement near ghost can trigger a hunt"
+          "label": "Player movement near ghost can trigger a hunt (up to 65% sanity)"
+        },
+        {
+          "id": "ghost_is_male",
+          "label": "Ghost is male (male name, model, or voice)",
+          "excludeOnly": true
         }
       ]
     },
@@ -122,20 +137,23 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Hunt speed is locked in when the hunt starts: 3.0 m/s minus 0.1 m/s for every unique non-equipment item players have picked up or thrown since the last hunt (minimum 0.4 m/s at 26+ items)",
-        "Item interactions by dead players also count toward slowing it",
-        "The item counter resets after every hunt, so items must be disturbed again before each new hunt",
+        "Hunt speed is fixed for the hunt: 3.0 m/s minus 0.1 m/s for every unique prop players have interacted with or picked up since the counter last reset (minimum 0.4 m/s at 26+ items)",
+        "Counted props include throwables, light switches, the fuse box, taps, etc.; doors, cursed possessions, and equipment do not count",
+        "Prop interactions by dead players also count toward slowing it",
+        "The item counter resets after every hunt AND whenever a crucifix is burned, so items must be disturbed again before each new hunt",
         "No line-of-sight acceleration and its speed cannot change mid-hunt",
-        "Less likely than other ghosts to interact with doors and light switches"
+        "9 items = 2.1 m/s (slower than a sprinting player), 13 items = 1.7 m/s (standard), 26 items = 0.4 m/s",
+        "Less likely to interact with doors and light switches (10% vs 25%) and has a 15% chance to fail prop interactions",
+        "The 'Doors starting open' difficulty setting is lowered by one step when the ghost is a Deildegast"
       ],
       "hunt_evidence": [
         {
           "id": "speed_scales_with_items",
-          "label": "Hunt speed drops as players pick up/throw house items before the hunt (3.0 m/s with nothing touched, down to 0.4 m/s at 26+ items)"
+          "label": "Hunt speed drops as players interact with house items before the hunt (3.0 m/s with nothing touched, down to 0.4 m/s at 26+ items)"
         },
         {
           "id": "constant_hunt_speed",
-          "label": "Hunt speed stays constant mid-hunt (no line-of-sight speed up), resetting to very fast for the next hunt"
+          "label": "Hunt speed stays constant mid-hunt (no line-of-sight speed up), resetting to very fast after each hunt or burned crucifix"
         }
       ]
     },
@@ -155,10 +173,11 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Can hunt 60s after being smudged instead of the standard 90s",
+        "Can hunt 60s after being incensed instead of the standard 90s",
         "Can hunt 20s after the previous hunt has ended or ghost has used a crucifix instead of the standard 25s",
         "Crucifix range is increased by 50% per tier (4.5m, 6m, 7.5m respectively)",
-        "Can hunt at any sanity"
+        "Has a rare ability to hunt at any sanity (this is an ability, so it is much less frequent than normal threshold hunts and fails during setup, incense, or cooldown)",
+        "Normal hunt threshold is 70% (not just the ability hunt)"
       ],
       "hunt_evidence": [
         {
@@ -187,15 +206,28 @@
       ],
       "nightmare_evidence": "Spirit Box",
       "extra_information": [
-        "33% chance to give heavy breathing through spirit box when within 1m of the ghost",
-        "Very fast hunt speed, but will slow down as it nears the targetted player",
-        "Is more visible during hunts",
-        "Always has LOS of the player during hunts, meaning you cannot hide from a Deogen"
+        "33% chance per question to give heavy bull-like breathing through the spirit box when the asking player is within 1m of the ghost",
+        "Hunt sanity threshold is 40% instead of 50%",
+        "Speed depends on pathing distance to its target: 3.0 m/s when farther than 5.32m, 0.4 m/s when closer than 2.42m; no line-of-sight speed up",
+        "Always has line-of-sight with all players during hunts, so you cannot hide from a Deogen; it targets the nearest player and re-picks every 5-10s",
+        "Kills after 2 seconds within 1.5m instead of 1 second (still instant within 1.1m)",
+        "Is visible for roughly 55% of a hunt instead of about 31% (easier ghost photos)",
+        "More likely to interact with doors (30% vs 25%)",
+        "While incensed it keeps its current speed (0.4 m/s on 100% or slower ghost speed settings)",
+        "Cannot be the contract ghost if the host is below Prestige 0 Level 30 (The Mimic can still imitate it)"
       ],
       "hunt_evidence": [
         {
           "id": "fast_far_slow_close",
           "label": "Ghost has fastest hunt movement speed in game when far, slowest movement speed in game when close"
+        },
+        {
+          "id": "finds_hidden_players",
+          "label": "Ghost goes straight to you while you are hidden with no noise/electronics (always knows where you are)"
+        },
+        {
+          "id": "spirit_box_breathing",
+          "label": "Heavy breathing response on spirit box when standing within 1m of the ghost"
         }
       ]
     },
@@ -216,16 +248,18 @@
       "nightmare_evidence": null,
       "extra_information": [
         "Three states: normal (1.7 m/s, 50% sanity), enraged (1.955 m/s, 60% sanity), and weakened (1.36 m/s, 40% sanity)",
-        "Becomes enraged after burning a crucifix, incense use, or stepping in salt",
+        "Moves up a state (normal->enraged or weakened->normal) instantly after burning a crucifix, when an incense blind ends during a hunt, 2s after stepping in salt while normal, or 3s after stepping in salt while weakened (any salt tier counts)",
         "Switches to weakened state if a hunt ends while enraged",
-        "Cannot disturb salt piles while enraged",
-        "Crucifix range reduced by 2m when enraged, increased by 1m when weakened",
-        "Incense blinding duration: 4s enraged, 5s normal, 6s weakened"
+        "Cannot disturb salt piles while enraged (walks straight through them like a Wraith)",
+        "Leaves 6 footprints instead of 4 after stepping in salt while weakened",
+        "Crucifix range reduced by 2m when enraged, increased by 1m when weakened (a floor T1 crucifix never stops an enraged Gallu)",
+        "Incense blinding duration: 4s enraged, 5s normal, 6s weakened",
+        "Tier III salt slows it for 2s normal, 3s weakened, and not at all when enraged"
       ],
       "hunt_evidence": [
         {
           "id": "enraged_by_equipment",
-          "label": "Ghost speeds up after using crucifix, incense, or salt"
+          "label": "Ghost speeds up / hunts earlier after a crucifix burns, incense is used, or it steps in salt"
         },
         {
           "id": "slow_after_enraged_hunt",
@@ -233,7 +267,7 @@
         },
         {
           "id": "no_salt_when_enraged",
-          "label": "Can't disturb salt while enraged (won't step in salt twice in a row)"
+          "label": "Walks through salt without disturbing it after being enraged (won't step in salt twice in a row)"
         },
         {
           "id": "variable_incense_blind",
@@ -257,14 +291,26 @@
       ],
       "nightmare_evidence": "DOTs",
       "extra_information": [
-        "DOTs only appear on video camera and will not show if a player is in the same room (DOTs state can start outside of room and enter a player's room)",
-        "Cannot change favorite rooms",
-        "Does not wander from its room often"
+        "DOTs silhouette only appears on video camera and only when no player is in the same room (the DOTs state can still carry it into a player's room)",
+        "Only performs short roams, so it can never change favorite room (except via the Monkey Paw sanity wish)",
+        "Roams less often, giving it the highest interaction rate of any ghost at 0% sanity",
+        "2/3 chance to enter DOTs state from a roam (1/3 for other ghosts) and 10% chance to DOTs instead of returning to its room",
+        "Always has DOTs as evidence on 1 or 2 evidence difficulties",
+        "Its D.O.T.S ghost photo works normally even though the silhouette is invisible to the eye"
       ],
       "hunt_evidence": [
         {
           "id": "never_changes_rooms",
           "label": "Ghost never changes favorite room"
+        },
+        {
+          "id": "dots_camera_only",
+          "label": "DOTs silhouette seen on a video camera but not with the naked eye"
+        },
+        {
+          "id": "dots_seen_naked_eye",
+          "label": "DOTs silhouette seen with the naked eye",
+          "excludeOnly": true
         }
       ]
     },
@@ -284,10 +330,13 @@
       ],
       "nightmare_evidence": "Freezing",
       "extra_information": [
-        "Will have visible freezing breath during hunts when the breaker is off/broken",
-        "Cannot turn on the breaker",
-        "More likely to turn off the breaker",
-        "Is faster in colder rooms during hunts"
+        "Emits visible freezing breath every 3s during hunts in any room while the fuse box is off (dead players cannot see it)",
+        "Cannot turn on the fuse box and is twice as likely to turn it off",
+        "Hunt speed by room temperature: >15C 1.4, 12-15C 1.75, 9-12C 2.1, 6-9C 2.3, 3-6C 2.4, 0-3C 2.5, <0C 2.7 m/s",
+        "No line-of-sight acceleration",
+        "Always has Freezing Temperatures as evidence on 1 or 2 evidence difficulties",
+        "Slightly less likely to perform ghost events (turning off the fuse box uses the same ability slot)",
+        "All 3 evidence can be found without ruling out The Mimic - check for a spirit box response to tell them apart"
       ],
       "hunt_evidence": [
         {
@@ -301,6 +350,11 @@
         {
           "id": "faster_cold_rooms",
           "label": "Ghost's movement speed is faster in colder rooms during hunts"
+        },
+        {
+          "id": "ghost_turned_on_breaker",
+          "label": "Ghost turned the fuse box on",
+          "excludeOnly": true
         }
       ]
     },
@@ -320,9 +374,10 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "With the breaker on, the Jinn will speed up during a hunt if a player is in LOS and further than 3m away",
-        "The Jinn cannot directly turn off the breaker",
-        "With the breaker on, can drop a nearby player's sanity by 25%, with EMF 2 or EMF 5 at the breaker"
+        "With the fuse box on, moves at a fixed 2.5 m/s while it has line of sight with a player farther than 3m; otherwise standard speed (LOS speed accrues in the background)",
+        "Cannot directly turn off the fuse box, but can still trip it by turning on too many lights (a tripped box also turns off all light switches)",
+        "With the fuse box on, can drain 25% sanity from one player in its room or within 3m, leaving EMF 2 or EMF 5 at the fuse box",
+        "Cannot use any ability while the fuse box is off or broken"
       ],
       "hunt_evidence": [
         {
@@ -331,7 +386,11 @@
         },
         {
           "id": "never_turns_off_breaker",
-          "label": "Ghost never turns off breaker"
+          "label": "Ghost never turns off breaker directly (it can still trip it by turning on too many lights)"
+        },
+        {
+          "id": "emf_at_breaker",
+          "label": "EMF 2/5 reading at the fuse box with the box still on, or a player suddenly loses 25% sanity"
         }
       ]
     },
@@ -351,11 +410,15 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Completely blind - detects players by sound instead of sight",
-        "During hunts, hears crouched movement within 10m, walking within 15m, and sprinting within 30m; a still, silent player is undetectable even in the open",
-        "Moves at 2.21 m/s toward sounds heard more than 5m away, slowing to 1.7 m/s within 5m of the last heard position; repeated detections can build speed up to 3.65 m/s",
+        "Nearly blind - only gains line of sight if a player is within 5m with no obstacles; otherwise it hunts by sound",
+        "During hunts, hears footsteps on the same floor only: crouch-walking within 10m, walking within 15m, sprinting within 30m; a still, silent player is undetectable even in the open",
+        "Cannot hear players during the grace period or while incensed; breathing and object throws are not heard",
+        "Base speed 1.7 m/s, multiplied by 1.3 (2.21 m/s) while travelling to a heard sound without line of sight; can reach 3.65 m/s with accumulated speed",
+        "Kill range is reduced: instant within 0.5m and after 1s within 0.6m (standard 1.1m / 1.5m), and it does not need line of sight to kill by bumping into you",
+        "Can update its sound waypoint every 5-10s before reaching the previous one",
         "A player sprinting in the same room lets it hunt at up to 70% average sanity",
-        "Cannot perform the ghost mist event or chasing ghost events"
+        "Cannot perform the ghost mist or chasing ghost events",
+        "All 3 evidence can be found without ruling out The Mimic - check for Freezing Temperatures to tell them apart"
       ],
       "hunt_evidence": [
         {
@@ -367,8 +430,16 @@
           "label": "Can hunt early (up to 70% sanity) when a player sprints in its room"
         },
         {
+          "id": "hears_footsteps",
+          "label": "Ghost tracks you by footsteps during hunts (comes toward sprinting/walking from far away without seeing you)"
+        },
+        {
           "id": "no_ghost_mist",
           "label": "Never does ghost mist event"
+        },
+        {
+          "id": "no_chasing_event",
+          "label": "Never does the chasing ghost event (ghost runs at you and hisses)"
         }
       ]
     },
@@ -388,11 +459,11 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Won't hunt until 40% average sanity when light switch in its current room is in the on position (regardless of breaker state), 60% average sanity if light switch is in the off position or if the lights are broken (regardless of light switch state)",
-        "Will wander out of rooms with lights on to rooms with lights off",
-        "Prefers turning off lights and light bursting events",
-        "Cannot not turn on lights (excluding TVs and computers)",
-        "Can immediately turn off a light switch (or lamp) that a player has turned on within 4m of the ghost"
+        "Hunt threshold is 40% while the light switch in its current room is on and 60% while it is off, regardless of fuse box state (the modifier does not apply if the room's bulbs are shattered; equipment and firelights don't count)",
+        "50% chance to long roam out of a lit room, and can long roam from any lit room (not just its favorite room)",
+        "Prefers turning off lights as an interaction and has a 11.11% chance for light-shattering events (6.67% standard)",
+        "Cannot turn on lights (TVs, computers, and the fuse box are exceptions, though TVs/computers appear bugged) and cannot do the EMF light-flicker interaction",
+        "1/7 chance to turn off a light within 1s after a player turns it on within 4m of the ghost (each light has a 10s cooldown per player); works even with the fuse box off or during ghost events"
       ],
       "hunt_evidence": [
         {
@@ -410,6 +481,16 @@
         {
           "id": "wanders_to_dark",
           "label": "Wanders out of rooms with light into rooms without light (only lights effected by breaker count, wandering happens outside of hunting)"
+        },
+        {
+          "id": "ghost_turned_on_light",
+          "label": "Ghost turned on a light switch or lamp",
+          "excludeOnly": true
+        },
+        {
+          "id": "emf_light_flicker",
+          "label": "Light flickered outside an event/hunt and left an EMF reading at the switch",
+          "excludeOnly": true
         }
       ]
     },
@@ -429,13 +510,25 @@
       ],
       "nightmare_evidence": "Spirit Box",
       "extra_information": [
-        "Places a curse on player when heard through spirit box or parabolic microphone, which causes sanity to passively drain twice as fast",
-        "Incense blindness duration during hunts is increased by 50% (7.5s instead of 5s)"
+        "Curses a player when they get a spirit box response, hear a paranormal sound on the parabolic mic, or try to record a sound with the sound recorder",
+        "Cursed players lose passive sanity twice as fast and lit rooms no longer stop the drain; sanity medication removes the curse",
+        "Hunt speed is tied to average sanity: 1.5 m/s at 45%+, rising about 0.083 m/s per 5% down to 2.25 m/s at 0-5%; changes live mid-hunt (taking meds mid-hunt slows it)",
+        "Speeds up with line of sight like a normal ghost - up to 3.71 m/s at 0-5% sanity, the fastest ghost in the game",
+        "Incense blinds it for 7s instead of 5s during hunts",
+        "Always has Spirit Box as evidence on 1 or 2 evidence difficulties"
       ],
       "hunt_evidence": [
         {
           "id": "slows_on_meds",
-          "label": "Ghost hunt speed is tied to sanity (slows when taking meds mid hunt)"
+          "label": "Ghost hunt speed is tied to sanity (slows when taking meds mid hunt, speeds up over multiple hunts as sanity drops)"
+        },
+        {
+          "id": "longer_incense_blind",
+          "label": "Incense blinds ghost for noticeably longer than 5 seconds during hunts (7s)"
+        },
+        {
+          "id": "cursed_sanity_drain",
+          "label": "Sanity drains unusually fast after a spirit box response / parabolic sound / sound recorder use (cursed)"
         }
       ]
     },
@@ -455,13 +548,17 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Footsteps and vocals cannot be heard more than 12m away during hunts (normal is 20m)",
-        "Has an increased number of sounds through the parabolic microphone"
+        "Footsteps and vocals cannot be heard more than 12m away during hunts (normal is 20m) - slightly past the 10m electronic interference range",
+        "Produces paranormal sounds every 64-127s instead of 80-127s (two sounds within 80s confirms a Myling)"
       ],
       "hunt_evidence": [
         {
           "id": "silent_footsteps",
           "label": "Cannot hear ghost's footsteps when on the same storey until within 12m range during hunts (test with flashlight standard 10m disruption)"
+        },
+        {
+          "id": "frequent_parabolic_sounds",
+          "label": "Two paranormal sounds within 80 seconds on parabolic mic / sound recorder"
         }
       ]
     },
@@ -481,15 +578,25 @@
       ],
       "nightmare_evidence": "Ultraviolet",
       "extra_information": [
-        "Special 6 fingered fingerprints",
-        "Has a 25% chance to not leave ultraviolet evidence",
-        "Will change models for a single blink during hunts at least once per standard length hunt",
-        "Can make fingerprints disappear twice as fast"
+        "1/6 chance to leave a unique print: six-fingered handprint, two fingerprints on light switches/lamps/remotes, or five fingerprints on keyboards and prison cell doors",
+        "75% chance to leave fingerprints (standard 100%) and 75% chance per step to leave a footprint in salt (missing steps also make no footstep sound)",
+        "Ability halves the remaining time of all fingerprints currently on the map",
+        "Shapeshifts into another model of the same gender for a single blink during hunts on fixed visibility timers (first about 6-8s after the grace period); a video camera shows 'Ghost Shapeshift'",
+        "Always has Ultraviolet as evidence on 1 or 2 evidence difficulties, but can still fail to leave prints",
+        "The only ghost that can skip a footstep sound during fake hunt / music box events"
       ],
       "hunt_evidence": [
         {
           "id": "changes_model",
           "label": "Ghost model changes briefly during hunt"
+        },
+        {
+          "id": "unique_fingerprints",
+          "label": "Six-fingered handprint, or wrong number of fingerprints on a switch/keyboard"
+        },
+        {
+          "id": "missing_fingerprints",
+          "label": "Ghost touched a surface but left no fingerprints (when UV is known evidence) or prints vanished unusually fast"
         }
       ]
     },
@@ -509,11 +616,13 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Switches between calm and aggressive states every 2 minutes (starts calm, first switch 1 minute after door opens)",
-        "Calm state: hunts at 10% sanity, 1.445 m/s speed, activity level of 90",
-        "Aggressive state: hunts at 65% sanity, 1.955 m/s speed, activity level of 25",
+        "Switches between calm and aggressive states every 2 minutes (starts calm, first switch 1 minute after an exit door opens)",
+        "Calm state: hunts at 10% sanity, 1.445 m/s speed, fixed activity level of 90",
+        "Aggressive state: hunts at 65% sanity, 1.955 m/s speed, fixed activity level of 25",
         "Hunts initiated in aggressive state have 20% shorter duration, even if state switches mid-hunt",
-        "Can switch states during a hunt"
+        "Can switch states (and base speed) during a hunt",
+        "Above 10% average sanity it can only hunt while aggressive, so every hunt starts fast",
+        "Speeds up with line of sight (unlike a Thaye, which it can be confused with)"
       ],
       "hunt_evidence": [
         {
@@ -542,11 +651,11 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Drains 20% sanity during events (instead of the standard 10%)",
-        "Never does the \"Ghost Mist\" event",
-        "Blinks more frequently during hunts, making them more visible",
-        "More active around multiple people",
-        "More likely to appear as full ghost model during events"
+        "Drains 20% sanity when touching a player during a ghost event (instead of 10%)",
+        "Never does the ghost mist event (but can still hiss during its chasing event)",
+        "40% chance of chasing events (20% standard) and 2/3 chance to manifest in full form instead of shadow/translucent",
+        "Visible for about 55-63% of a hunt instead of about 31%",
+        "Activity increased by 30 while a player is within 6m or in the same room"
       ],
       "hunt_evidence": [
         {
@@ -556,6 +665,10 @@
         {
           "id": "no_ghost_mist",
           "label": "Never does ghost mist event"
+        },
+        {
+          "id": "event_drains_20",
+          "label": "Ghost event touch drained 20% sanity instead of 10%"
         }
       ]
     },
@@ -566,7 +679,7 @@
       "alt_speed": null,
       "has_los": true,
       "hunt_sanity": "60%",
-      "hunt_sanity_low": "60%",
+      "hunt_sanity_low": "40%",
       "hunt_sanity_high": "100%",
       "evidence": [
         "Spirit Box",
@@ -575,9 +688,13 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Will attempt to hunt at any sanity after extinguishing every 3rd flame",
-        "Flames act like crucifixes, will blow out a flame if it tries to hunt (within 4m). Ghost prioritizes flames over crucifixes when preventing hunts",
-        "More likely to extinguish a flame, the more players that are dead"
+        "Hunt threshold is 60%, dropping to 40% while within 4m of a lit flame",
+        "After every 3rd flame it blows out it will attempt to hunt at any sanity (blocked by setup phase, crucifix, another flame, cooldown, or incense; the counter resets to 0)",
+        "Flames within 4m act like crucifixes: a hunt attempt blows out the flame instead (no cooldown restart). Flames take priority over crucifixes",
+        "Its hunt attempts ignore firelight cooldowns, so it can blow out a firelight within 30s of first lighting / 20s of relighting, or even a T1 igniter match",
+        "Blows out flames more often the more players are dead (66.67% -> 83.33%)",
+        "Cannot light any fire source (unless forced by a voodoo doll)",
+        "All 3 evidence can be found without ruling out The Mimic - check for Ultraviolet to tell them apart"
       ],
       "hunt_evidence": [
         {
@@ -585,8 +702,16 @@
           "label": "Ghost hunts after every third flame extinguished (single candle, candelabra, lit igniter all = 1 flame)"
         },
         {
+          "id": "blows_out_fresh_flame",
+          "label": "Flame blown out within 30s of first lighting / 20s of relighting (or a T1 igniter match) - a hunt attempt"
+        },
+        {
+          "id": "flame_blocks_hunt",
+          "label": "Ghost refuses to hunt near lit firelights but hunts where none are lit / blows a flame out instead of burning a crucifix"
+        },
+        {
           "id": "cant_light_fire",
-          "label": "Ghost cannot light any fire sources (unless forced by a voodoo doll)"
+          "label": "Ghost cannot light any fire sources (Onryo can be forced by a voodoo doll)"
         }
       ]
     },
@@ -606,20 +731,24 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Will not appear in ghost photos (including DOTs ghost photos)",
-        "Taking a photo of the ghost will cause the ghost to disappear (including DOTs state)",
-        "Less visible during hunts",
-        "Player will lose 0.5% sanity /s while in heartbeat range of the ghost during hunts and events",
-        "Can roam toward a random player, leaving EMF 2 at the location where it wanders to"
+        "Taking a photo or video of the ghost (full, translucent, shadow, or DOTs form) makes it disappear; the photo shows no ghost and no interference (currently bugged for videos)",
+        "Players within 10m in heartbeat range lose 0.5% sanity per second during ghost events and hunts",
+        "Less visible during hunts: invisible for 1-2s at a time and visible only about 12% of the hunt (standard 31%)",
+        "Can roam to within 5m of a random player, leaving EMF 2 at head height where the roam ended (Wraith leaves EMF at ground level and may leave EMF 5)",
+        "Not guaranteed to have DOTs on reduced evidence difficulties"
       ],
       "hunt_evidence": [
         {
           "id": "disappears_photo",
-          "label": "Disappears in photos"
+          "label": "Disappears in photos (and vanishes from view when photographed)"
         },
         {
           "id": "less_visible_hunt",
-          "label": "Less visible during hunts"
+          "label": "Less visible during hunts (invisible for over a second at a time)"
+        },
+        {
+          "id": "roams_to_player_emf",
+          "label": "Random EMF 2 reading at head height near a player, far from the ghost room"
         }
       ]
     },
@@ -639,10 +768,10 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "During hunts, Poltergeists will throw an item every 0.5s with an increased force",
-        "Has a higher chance to throw & interact with objects",
-        "Can throw objects faster and further",
-        "Poltergeist Explosion, will throw multiple objects at the same time, decreasing nearby player sanity by 2% per item thrown"
+        "During hunts, throws a nearby item every 0.5s (standard ghosts only have a 50% chance each 0.5s) with much greater force",
+        "Throws with a force of 2-6 horizontal / 3-6 vertical (standard 1-3 / 1-5), often across or between rooms",
+        "Can only interact with props by throwing them (20% chance per interaction attempt), so it can never light fires, trigger the car alarm, make dirty water, turn on radios, knock on windows, etc.",
+        "Poltergeist Explosion: throws every item in range at once (levitating 1-3s), leaving EMF 2 at head height and EMF 3 on items, and drains 2% sanity per item for players in the room; works even in lit rooms and drains dead players too"
       ],
       "hunt_evidence": [
         {
@@ -652,6 +781,19 @@
         {
           "id": "throws_multiple",
           "label": "Throws multiple objects at the same time"
+        },
+        {
+          "id": "throws_in_lit_room",
+          "label": "Items thrown in a lit room (other ghosts cannot throw with the lights on)"
+        },
+        {
+          "id": "cant_light_fire",
+          "label": "Ghost cannot light any fire sources (Onryo can be forced by a voodoo doll)"
+        },
+        {
+          "id": "non_throw_prop_interaction",
+          "label": "Ghost triggered car alarm, made dirty water, turned on a radio, or knocked on a window",
+          "excludeOnly": true
         }
       ]
     },
@@ -671,8 +813,10 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "During a hunt, causes electronic disturbance at a 15m range instead of 10m",
-        "Increased speed near active electronic equipment while hunting"
+        "Disrupts electronics and global chat within 15m instead of 10m when manifesting or hunting; heartbeats are also heard from 15m",
+        "Near active electronic equipment on the same floor (6m small / 8m medium / 10m large maps) it hunts at 65% sanity and moves at a fixed 2.5 m/s during hunts",
+        "Equipment that counts can be held, placed, or dropped (not thrown cameras, thrown/held sensors or DOTs, or building electronics like lights and the fuse box)",
+        "Line-of-sight speed accrues in the background while near electronics and applies once it leaves them"
       ],
       "hunt_evidence": [
         {
@@ -682,6 +826,10 @@
         {
           "id": "larger_equipment_range",
           "label": "Effects equipment at 15 meters instead of 10 meters during hunt"
+        },
+        {
+          "id": "electronics_trigger_hunt",
+          "label": "Hunts early (up to 65% sanity) with active electronics left near it"
         }
       ]
     },
@@ -701,7 +849,8 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "During a hunt, a Revenant will be slow (1.0m/s) until it detects a player (voice, active electronic equipment, or LOS) where it will immediately speed up to 3.0m/s and remain at that speed until it reaches the players last known location where it will gradually slow back down"
+        "During a hunt, moves at 1.0 m/s until it detects a player (voice, active electronics, or line of sight), then instantly moves at 3.0 m/s until it reaches the player's last known location, then slows back to 1.0 m/s over about 2.7 seconds",
+        "No line-of-sight acceleration (its chase speed is already fixed at 3.0 m/s)"
       ],
       "hunt_evidence": [
         {
@@ -726,17 +875,32 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Only ghost that can appear as a shadow or translucent ghost model on summoning circle event",
-        "Prefers shadow ghost model during events",
-        "Will not hunt if in the same room as a player",
-        "Will not do events in the same room as a player (but can start an event outside of the room and teleport to the player)",
-        "Will not do interactions that result in EMF 2, EMF 3, or EMF 5 while in the same room as the player, including ghost writing and blowing out flames (can step just outside of the room and interact with things in the room)",
-        "Does more ghost events at a lower average sanity (cannot do ghost events at 100% sanity)"
+        "Hunt threshold is 35%",
+        "Will not hunt, interact (including the fuse box and voodoo-forced interactions), or start ghost events while any player is in its current room (it can still interact into the room from just outside via its interaction range)",
+        "Cannot blow out flames during hunts while a player is in the same room",
+        "Ghost event success chance is 0% at 100% average sanity, rising 2% per 1% sanity lost (always succeeds at or below 50%)",
+        "2/3 chance to appear as a shadow during ghost events; 50% chance to appear as a shadow when summoned by a summoning circle, music box, or monkey paw (returns to full form when the hunt starts)",
+        "Cannot do singing or 'appear' ghost events; 60% chance of mist form events (20% standard)",
+        "Never uses the throw variant where an object levitates then flies toward a player",
+        "Generally less active than other ghosts"
       ],
       "hunt_evidence": [
         {
           "id": "no_hunt_in_room",
-          "label": "Ghost won't hunt while players are in it's favorite room"
+          "label": "Ghost won't hunt while players are in its current room"
+        },
+        {
+          "id": "shadow_on_summon",
+          "label": "Ghost appeared as a shadow when summoned (summoning circle / music box / monkey paw)"
+        },
+        {
+          "id": "no_events_high_sanity",
+          "label": "No ghost events at all near 100% average sanity, mostly mist/shadow events later"
+        },
+        {
+          "id": "singing_or_appear_event",
+          "label": "Ghost did a singing event or an 'appear' event",
+          "excludeOnly": true
         }
       ]
     },
@@ -756,7 +920,8 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Will wait 180s after being incensed before attempting to hunt again, instead of the standard 90s"
+        "Will wait 180s after being incensed before attempting to hunt again, instead of the standard 90s (applies even if incensed mid-hunt)",
+        "No other special behaviour - the baseline ghost"
       ],
       "hunt_evidence": [
         {
@@ -781,14 +946,26 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Age response on Ouija board increases as Thaye ages",
-        "Ghost ages over time (every 1-2 minutes) while player is nearby",
-        "More active when younger"
+        "Has an internal age (0-10). First age attempt is 1 minute after an exit door opens; it ages if a player is in its room or within 3m, then retries every 1-2 minutes (every 30s if nobody was near). Ageing mid-hunt applies after the hunt",
+        "Hunt threshold starts at 75% and drops 6% per age to 15% at age 10 (actual values are 1% lower due to an oversight)",
+        "Hunt speed starts at 2.75 m/s and drops 0.175 m/s per age to 1.0 m/s at age 10 (1.7 m/s at age 6); no line-of-sight acceleration",
+        "Activity starts at 200% and drops 15% per age to 50%; ghost event success chance is (1 - age/9), so no natural events after ageing 9 times",
+        "Fixed 1/8 chance to hunt when below its threshold (does not increase at lower sanity)",
+        "Each age adds 1-4 years to the Ouija board age answer",
+        "More likely to interact with doors (30% vs 25%)"
       ],
       "hunt_evidence": [
         {
           "id": "hunt_speed_decreases",
           "label": "Ghost has gradually slower hunt speeds as players spend more time in the ghost's favorite room"
+        },
+        {
+          "id": "very_fast_early_hunt",
+          "label": "Very fast (2.75 m/s), very early (75% sanity) hunt at the start of a contract that does not speed up with line of sight"
+        },
+        {
+          "id": "ouija_age_increases",
+          "label": "Ouija board age answer increases over the contract"
         }
       ]
     },
@@ -799,7 +976,7 @@
       "alt_speed": null,
       "has_los": true,
       "hunt_sanity": "50%",
-      "hunt_sanity_low": "12%",
+      "hunt_sanity_low": "10%",
       "hunt_sanity_high": "100%",
       "evidence": [
         "Spirit Box",
@@ -808,20 +985,28 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Will always show Ghost Orbs as an additional evidence, even on 0 evidence",
-        "Changes ghost behavior every 30 seconds to 2 minutes, leading to inconsistent behavior depending on the ghost is it currently mimicking"
+        "Always shows Ghost Orbs as an additional evidence, even on 0 evidence (they only appear in the ghost room like real orbs)",
+        "Starts in a 'blank' state with no abilities for 1 minute after the exit door opens, then imitates a random ghost type every 30 seconds to 2 minutes (never switching during hunts or events)",
+        "Copies hunt thresholds, speeds, activity, event preferences, and abilities of the imitated ghost, but not its evidence (it cannot copy Goryo's camera-only DOTs)",
+        "Cannot imitate a Banshee or Dayan if The Mimic is male",
+        "A Moroi curse persists after it changes type; incense duration is that of the ghost imitated when incensed",
+        "Getting all three evidence of a Hantu, Kormos, or Onryo does not rule out The Mimic - check the 4th evidence"
       ],
       "hunt_evidence": [
         {
           "id": "copies_ghost_traits",
-          "label": "Copies other ghost's traits every 30s-2min"
+          "label": "Copies other ghost's traits every 30s-2min (conflicting behaviour between hunts)"
+        },
+        {
+          "id": "four_evidence",
+          "label": "Four pieces of evidence found (extra Ghost Orbs)"
         }
       ]
     },
     {
       "ghost": "The Twins",
-      "min_speed": 1.53,
-      "max_speed": 1.87,
+      "min_speed": 1.5,
+      "max_speed": 1.9,
       "alt_speed": null,
       "has_los": true,
       "hunt_sanity": "50%",
@@ -834,14 +1019,21 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Can do 2 interactions at the same time, one within its standard range (1.5m, 3m on medium/large maps) and the other within its extended range (8m, 16m on medium/large maps)",
-        "Ghost speed during hunts will be  \u00b110% of the normal 1.7m/s speed",
-        "Triggering motion sensors, stepping in salt, and spirit box responses only occur at its physical location"
+        "Mechanically a single ghost: no decoy sets off motion sensors, steps in salt, drops temperature, or answers the spirit box; only one hunt at a time",
+        "Interactions: 50% normal range (about 2.1m, 4.2m on large maps), 30% far range after a 1-2s delay (about 8.5m, 17m on large maps), 20% both at once - the only ghost that can do two interactions under 2s apart",
+        "Hunt speed is 1.7 m/s with a fixed +/-0.2 modifier chosen each hunt (50/50): 1.5 m/s or 1.9 m/s (2.605 / 3.005 m/s max with line of sight)",
+        "The fast twin is meant to hunt from near its last far-range interaction (currently bugged, hunts from its current spot); crucifix is checked at its current location first, so it can start a hunt on top of a crucifix",
+        "Uses its last interaction range during hunts, so doors or items may move far from the ghost while it hunts",
+        "Cursed hunts always start at its current location but still pick a random speed"
       ],
       "hunt_evidence": [
         {
           "id": "alternating_speed",
-          "label": "Hunt speed alternates between slightly slower and faster than normal on each new hunt"
+          "label": "Hunt speed alternates between slightly slower (1.5 m/s) and faster (1.9 m/s) than normal between hunts"
+        },
+        {
+          "id": "double_interaction",
+          "label": "Two interactions within 2 seconds of each other, or interactions far from where the ghost is (no temp drop/spirit box/salt there)"
         }
       ]
     },
@@ -861,14 +1053,18 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Will not touch nor interact with salt in any way",
-        "Will not be slowed down by tier 3 salt during a hunt",
-        "Can teleport to a random player, leaving EMF 2 or EMF 5 at the their new location"
+        "Will never step in or disturb salt, including Tier III salt during hunts (it does not path around it, it just ignores it)",
+        "Can teleport to a random player outside of hunts, leaving EMF 2 at ground level (33% chance of EMF 5) where it lands, then behaves normally (and may hunt from there)",
+        "Does not float, walk through walls, or walk quietly - footsteps are normal volume"
       ],
       "hunt_evidence": [
         {
           "id": "no_salt",
-          "label": "Ghost cannot touch salt"
+          "label": "Ghost walks through salt without disturbing it (never touches salt)"
+        },
+        {
+          "id": "teleport_emf",
+          "label": "Random EMF 2 or EMF 5 reading at floor level near a player, far from the ghost room"
         }
       ]
     },
@@ -888,14 +1084,18 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Hearing/detection distance is 2.5m and less during hunts",
-        "More active when talking near it",
-        "Talking in the same room as a Yokai can cause it to hunt up to 80% average sanity"
+        "During hunts it can only hear voices and sense held electronics within 2.5m (standard 9m / 7.5m); line of sight is unaffected",
+        "Talking in the same room raises its hunt threshold to 80% and its activity by 30",
+        "Must be within 2.5m of the Music Box to trigger the music box event (5m for others) and within 0.5m of the box for the cursed hunt to trigger"
       ],
       "hunt_evidence": [
         {
           "id": "poor_detection",
           "label": "Ghost won't hear/detect you outside of 2.5 meters during hunt"
+        },
+        {
+          "id": "talking_triggers_hunt",
+          "label": "Hunts very early (up to 80% sanity) while players talk in its room"
         }
       ]
     },
@@ -915,23 +1115,34 @@
       ],
       "nightmare_evidence": null,
       "extra_information": [
-        "Only ghost that can close or interact with an exit door outside of a hunt/event",
-        "Incensing the ghost will trap the ghost in its room for the duration of the incense effect (90s)",
-        "Can shut a door and drop sanity of nearby players by 15% if a door is in the room"
+        "Ability: closes one open door in its room fully and smoothly (EMF 2) and drains 15% sanity from every player within 7.5m (exit doors count, hiding spot doors do not)",
+        "Outside of hunts it uses a much stronger force on doors, so it always opens or closes doors completely - a door nudged only slightly rules out a Yurei",
+        "Only ghost that can close an exit door outside of a hunt/event (0.18.0 fixed a bug that let other ghosts copy this)",
+        "Incensing it replaces every roam with a return to its favorite room for 90s, which also prevents the DOTs state",
+        "Does not have an increased chance to touch doors"
       ],
       "hunt_evidence": [
         {
           "id": "double_slam",
-          "label": "Ghost double touches doors and slams doors"
+          "label": "Ghost always fully opens or fully closes doors outside of hunts (never nudges them slightly)"
         },
         {
           "id": "interacts_main_door",
-          "label": "Ghost interacts with the main door outside of ghost event and hunts"
+          "label": "Ghost closes the main exit door outside of ghost events and hunts"
+        },
+        {
+          "id": "door_close_sanity_drop",
+          "label": "Door closes on its own and nearby players lose 15% sanity"
+        },
+        {
+          "id": "door_nudged",
+          "label": "Ghost moved a door only slightly outside of a hunt",
+          "excludeOnly": true
         }
       ]
     }
   ],
-  "version": "v0.18.0.0 (1.000.042)",
+  "version": "v0.18.0.0 - v0.19.0.2 (1.000.042) - no ghost changes through 0.19.0.2",
   "evidence": {
     "EMF 5": "EMF 5",
     "Ultraviolet": "Ultraviolet",
